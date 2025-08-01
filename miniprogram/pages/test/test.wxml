@@ -1,0 +1,6 @@
+<!--pages/test/test.wxml-->
+
+
+<view class="box">
+  <button type="warn" plain size="mini" bindtap="handler">测试发送请求</button>
+</view>
