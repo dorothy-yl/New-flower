@@ -29,6 +29,6 @@ Page({
 
   // 监听是否更改了购买数量
   onChangeGoodsCount(event) {
-    console.log(event.detail)
+    // console.log(event.detail)
   }
 })

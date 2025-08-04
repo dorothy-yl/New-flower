@@ -19,10 +19,20 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: {},
+  data: {
+    activeIndex:0
+  },
 
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {
+    getSwiprIndex(event) {
+      // console.log(event)
+      const { current } = event.detail
+      this.setData({
+        activeIndex: current
+      })
+    }
+  }
 })

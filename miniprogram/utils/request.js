@@ -13,6 +13,17 @@ class WXRequest {
     timeout: 60000 //小程序默认的超时时长是一分钟
   }
 
+  // 定义拦截器对象，需要包含请求拦截器和响应拦截器，方便在请求之前以及响应拦截器进行逻辑处理
+  interceptors = {
+    // 请求拦截器
+    // 对请求内容进行新增和修改
+    request: (config) => config,
+
+    // 响应拦截器
+    // 在服务器响应数据以后，对服务器响应的数据进行逻辑处理
+    response: (response) => response
+  }
+
   //用于创建初始化和类的属性以及方法
   //用于实例化时传入的参数，会被constructor形参时进行接收
   constructor(params = {}) {
@@ -31,17 +42,27 @@ class WXRequest {
 
     // 合并请求参数
     options = { ...this.defaults, ...options }
-    
-    console.log(options)
+    // console.log(options)
+
+    // 在请求发送之前，请求和调用拦截器，新增和修改请求参数
+    options = this.interceptors.request(options)
 
     return new Promise((resolve, reject) => {
       wx.request({
         ...options,
+        // 当接口调用成功时会触发success回调函数
         success: (res) => {
-          resolve(res)
+          // 不管成功响应还是失败响应，都需要调用响应拦截器；响应拦截器需要接受服务器响应的数据，处理好之后进行返回，通过resolve将返回来的数据抛出去
+
+          // 在响应拦截器传递参数时，需要将请求的参数也一起传递;方便进行代码的调试和逻辑的处理，需要先合并参数，再将合并的参数传递给拦截器
+          const mergeRes = Object.assign({}, res, { config: options, isSuccess: true })
+          resolve(this.interceptors.response(mergeRes))
         },
+
         fail: (err) => {
-          reject(err)
+          // 不管成功响应还是失败响应，都需要调用响应拦截器；
+          const mergeErr = Object.assign({}, err, { config: options, isSuccess: false })
+          reject(this.interceptors.response(mergeErr))
         }
       })
     })
@@ -74,6 +95,12 @@ class WXRequest {
     // 当调用PUT时,需要用到 request 方法的返回值 return 出去
     return this.request(Object.assign({ url, data, method: 'PUT' }, config))
   }
+
+  // 封装并发请求方法
+  all(requests) {
+    // 使用Promise.all进行并发请求
+    return Promise.all(requests)
+  }
 }
 
 //以下是实例化代码，目前写道同一个文件，为了方便进行测试，以后会提取多个文件
@@ -81,5 +108,19 @@ const instance = new WXRequest({
   baseURL: 'https://gmall-prod.atguigu.cn/mall-api',
   timeout: 15000
 })
+
+// 配置请求拦截器
+instance.interceptors.request = (config) => {
+  // 在请求之前做点什么...
+  return config
+}
+
+// 配置响应拦截器
+instance.interceptors.response = (response) => {
+  // console.log('响应拦截器:', response)
+  
+  // 直接返回响应数据，不做额外处理
+  return response
+}
 
 export default instance

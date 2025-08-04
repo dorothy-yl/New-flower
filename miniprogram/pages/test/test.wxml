@@ -4,3 +4,11 @@
 <view class="box">
   <button type="warn" plain size="mini" bindtap="handler">测试发送请求</button>
 </view>
+
+<view class="box">
+  <button type="primary" plain size="mini" bindtap="handler1">测试发送请求</button>
+</view>
+
+<view class="box">
+  <button type="warn" plain size="mini" bindtap="allHandler">测试并发请求</button>
+</view>
