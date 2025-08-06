@@ -1,6 +1,6 @@
 <!--pages/index/banner/banner.wxml-->
 <!-- 轮播图 -->
-<view class="swiper-box">
+<view class="swiper-box" wx:if="{{bannerList && bannerList.length > 0}}">
   <swiper
     autoplay
     class="swiper"
@@ -16,7 +16,7 @@
           class="navigator"
           url="/pages/goods/detail/detail?goodsId=id"
         >
-          <image class="img" src="{{ item }}"></image>
+          <image class="img" src="{{ item }}" mode="aspectFill"></image>
         </navigator>
       </swiper-item>
     </block>
@@ -28,7 +28,7 @@
     <!-- rectangle 类名：默认的面板指示点颜色 -->
     <text
       wx:for="{{bannerList.length}}"
-      wx:key="id"
+      wx:key="index"
       class="{{ index===activeIndex ? 'active rectangle': 'rectangle' }}"
     ></text>
   </view>

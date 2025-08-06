@@ -13,8 +13,7 @@
     "pages/login/login",
     "pages/settings/settings",
     "pages/profile/profile",
-    "pages/test/test",
-    "pages/stores/numstores"
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -5,10 +5,10 @@
   <!-- 页面主体区域 -->
   <view class="container">
     <!-- 轮播图区域 -->
-    <banner />
+    <banner bannerList="{{bannerList}}"/>
 
     <!-- 导航分类 -->
-    <entrance />
+    <entrance cateList="{{categoryList}}"/>
 
     <!-- 广告区域 -->
     <view class="adver">
