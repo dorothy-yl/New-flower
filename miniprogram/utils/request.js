@@ -55,7 +55,7 @@ class WXRequest {
           // 不管成功响应还是失败响应，都需要调用响应拦截器；响应拦截器需要接受服务器响应的数据，处理好之后进行返回，通过resolve将返回来的数据抛出去
 
           // 在响应拦截器传递参数时，需要将请求的参数也一起传递;方便进行代码的调试和逻辑的处理，需要先合并参数，再将合并的参数传递给拦截器
-          const mergeRes = Object.assign({}, res, { config: options, isSuccess: true })
+          const mergeRes = Object.assign({}, res.data, { config: options, isSuccess: true })
           resolve(this.interceptors.response(mergeRes))
         },
 
