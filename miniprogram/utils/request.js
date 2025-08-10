@@ -2,7 +2,7 @@
 class WXRequest {
   //定义实例属性，用来设置默认请求参数
   defaults = {
-    baseURL: '', //请求基准地址
+    baseURL: 'http://localhost:3000', //请求基准地址
     url: '', //接口的请求路径
     data: null, //请求的参数
     method: 'GET', //请求的方法
@@ -105,7 +105,7 @@ class WXRequest {
 
 //以下是实例化代码，目前写道同一个文件，为了方便进行测试，以后会提取多个文件
 const instance = new WXRequest({
-  baseURL: 'https://gmall-prod.atguigu.cn/mall-api',
+  // baseURL: 'https://gmall-prod.atguigu.cn/mall-api',
   timeout: 15000
 })
 
