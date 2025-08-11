@@ -60,3 +60,8 @@ export const reqIndexData = () => {
     return defaultData
   })
 }
+
+// 获取商品列表
+export const getGoodsList = (params) => {
+  return http.get('/goods/list', { params })
+}

@@ -105,7 +105,7 @@ class WXRequest {
 
 //以下是实例化代码，目前写道同一个文件，为了方便进行测试，以后会提取多个文件
 const instance = new WXRequest({
-  // baseURL: 'https://gmall-prod.atguigu.cn/mall-api',
+  baseURL: 'https://gmall-prod.atguigu.cn/mall-api',
   timeout: 15000
 })
 
