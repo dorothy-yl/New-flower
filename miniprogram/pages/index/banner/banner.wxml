@@ -16,7 +16,7 @@
           class="navigator"
           url="/pages/goods/detail/detail?goodsId=id"
         >
-          <image class="img" src="{{ item }}" mode="aspectFill"></image>
+          <image class="img" src="{{ item.imageUrl }}" mode="aspectFill"></image>
         </navigator>
       </swiper-item>
     </block>

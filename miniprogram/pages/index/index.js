@@ -1,4 +1,5 @@
 import { reqIndexData } from '../../api/index'
+import formatImageUrl from '../../utils/formatImageUrl';
 
 Page({
   // 初始化数据
@@ -30,9 +31,19 @@ Page({
     try {
       const res = await reqIndexData()
 
+      console.log("res", res);
+
       // 数据验证和格式化
-      const bannerData = res[0]?.data || []
-      const categoryData = res[1]?.data || []
+      const bannerData = res[0]?.data.map(item => ({
+        ...item,
+        imageUrl: formatImageUrl(item.imageUrl, 'banner')
+      })) || []
+      const categoryData = res[1]?.data.map(item=>({
+        ...item,
+        imageUrl: formatImageUrl(item.imageUrl, 'cate')
+      })) || []
+      console.log("categoryData", categoryData);
+      
       const activeData = res[2]?.data || []
       const guessData = res[3]?.data || []
       const hotData = res[4]?.data || []
@@ -40,8 +51,8 @@ Page({
 
 
       this.setData({
-        bannerList: Array.isArray(validBannerList) ? validBannerList : [],
-        categoryList: Array.isArray(validCategoryList) ? validCategoryList : [],
+        bannerList: Array.isArray(bannerData) ? bannerData : [],
+        categoryList: Array.isArray(categoryData) ? categoryData : [],
         activeList: Array.isArray(activeData) ? activeData : [],
         guessList: Array.isArray(guessData) ? guessData : [],
         hotList: Array.isArray(hotData) ? hotData : []

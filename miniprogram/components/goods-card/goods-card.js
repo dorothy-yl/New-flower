@@ -5,7 +5,7 @@ Component({
    */
   properties: {
     // 每一项商品的数据
-    goods: {
+    goodItem: {
       type: Object,
       value: {}
     }
@@ -19,15 +19,5 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {
-    // 商品点击事件
-    onGoodsClick() {
-      const goods = this.data.goods
-      if (goods && goods.id) {
-        wx.navigateTo({
-          url: `/pages/goods/detail/detail?id=${goods.id}`
-        })
-      }
-    }
-  }
+  methods: {}
 })

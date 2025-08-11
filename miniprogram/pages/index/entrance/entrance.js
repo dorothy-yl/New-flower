@@ -3,6 +3,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    activeIndex: {
+      type: Number,
+      value: 0
+    },
     // 分类列表
     cateList: {
       type: Array,

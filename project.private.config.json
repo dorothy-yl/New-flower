@@ -10,6 +10,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "商品分类",
+          "pathName": "pages/category/category",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "商品分类",
+          "pathName": "pages/category/category",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "测试页面",
           "pathName": "pages/test/test",
           "query": "",
