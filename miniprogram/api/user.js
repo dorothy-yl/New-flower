@@ -6,3 +6,8 @@ export const reqLogin = (code) => {
     baseURL: 'http://localhost:3000'
   })
 }
+
+// 封装接口API函数
+export const reqUserInfo = () => {
+  return http.get('/weixin/getuserInfo')
+}
