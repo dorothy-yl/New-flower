@@ -3,7 +3,7 @@
     <!-- 左侧的滚动视图区域 -->
     <scroll-view class="category-left-view" scroll-y>
       <!-- 一级分类 -->
-      <view class="left-view-item {{activeIndex === item.id ? 'active' : ''}}" wx:for="{{categoryList}}" wx:key="{{item.id}}" data-index="{{index}}" bindtap="onSwitchCategoryClick" data-id="{{item.id}}">
+      <view class="left-view-item {{activeIndex === item.id ? 'active' : ''}}" wx:for="{{categoryList}}" wx:key="id" data-index="{{index}}" bindtap="onSwitchCategoryClick" data-id="{{item.id}}">
         {{item.name}}
       </view>
       <!-- <view class="left-view-item">鲜花玫瑰</view>

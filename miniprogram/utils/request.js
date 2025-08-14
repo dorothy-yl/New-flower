@@ -36,9 +36,11 @@ class WXRequest {
   // request实例方法是接受一个对象类型的参数
   // 属性值和wx.request调用时传递的参数保持一致
   request(options) {
-    // 需要先合并完整的请求地址（baseURL+url)
-    // https://gmall-prod.atguigu.cn/mall-api'/index/findBanner
-    options.url = this.defaults.baseURL + options.url
+    // 如果请求选项中指定了 baseURL，则使用指定的，否则使用默认的
+    const baseURL = options.baseURL || this.defaults.baseURL
+
+    // 拼接完整的请求地址
+    options.url = baseURL + options.url
 
     // 合并请求参数
     options = { ...this.defaults, ...options }
@@ -118,7 +120,7 @@ instance.interceptors.request = (config) => {
 // 配置响应拦截器
 instance.interceptors.response = (response) => {
   // console.log('响应拦截器:', response)
-  
+
   // 直接返回响应数据，不做额外处理
   return response
 }
