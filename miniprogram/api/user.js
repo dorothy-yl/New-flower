@@ -9,5 +9,7 @@ export const reqLogin = (code) => {
 
 // 封装接口API函数
 export const reqUserInfo = () => {
-  return http.get('/weixin/getuserInfo')
+  return http.get('/weixin/getuserInfo', {}, {
+    baseURL: 'http://localhost:3000'
+  })
 }

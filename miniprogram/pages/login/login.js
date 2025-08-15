@@ -29,6 +29,9 @@ ComponentWithStore({
 
             // 获取用户信息
             this.getUserInfo()
+
+
+            wx.navigateBack()
           } else {
             toast({ title: '授权失败，请重新登录' })
           }

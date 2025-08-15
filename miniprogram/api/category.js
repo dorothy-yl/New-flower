@@ -7,5 +7,7 @@ import http from '../utils/http'
 
 */ 
 export const getCategoryData = () => {
-  return http.get('/index/findCategoryTree')
+  return http.get('/index/findCategoryTree', {}, {
+    baseURL: 'http://localhost:3000'
+  })
 }

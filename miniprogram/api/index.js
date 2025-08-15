@@ -50,11 +50,21 @@ export const reqIndexData = () => {
 
   // 尝试调用API，如果失败则返回默认数据
   return http.all([
-    http.get('/index/findBanner'),
-    http.get('/index/findCategory1'),
-    http.get('/index/advertisement'),
-    http.get('/index/findListGoods'),
-    http.get('/index/findRecommendGoods')
+    http.get('/index/findBanner', {}, {
+      baseURL: 'http://localhost:3000'
+    }),
+    http.get('/index/findCategory1', {}, {
+      baseURL: 'http://localhost:3000'
+    }),
+    http.get('/index/advertisement', {}, {
+      baseURL: 'http://localhost:3000'
+    }),
+    http.get('/index/findListGoods', {}, {
+      baseURL: 'http://localhost:3000'
+    }),
+    http.get('/index/findRecommendGoods', {}, {
+      baseURL: 'http://localhost:3000'
+    })
   ]).catch(error => {
     console.log('API调用失败，使用默认数据:', error)
     return defaultData

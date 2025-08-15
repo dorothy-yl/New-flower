@@ -1,17 +1,12 @@
-<!--pages/info/info.wxml-->
+<!-- pages/info/info.wxml -->
 <view class="container">
   <!-- 顶部展示图 -->
   <view class="top-show">
-    <image
-      mode="widthFix"
-      class="top-show-img"
-      src="/assets/images/banner.jpg"
-    ></image>
+    <image mode="widthFix" class="top-show-img" src="/assets/images/banner.jpg"></image>
   </view>
-
   <view class="bottom-show">
     <!-- 未登录面板 -->
-    <view class="user-container section" bindtap="toLoginPage">
+    <view wx:if="{{ !token }}" class="user-container section" bindtap="toLoginPage">
       <view class="avatar-container">
         <image src="/assets/images/avatar.png"></image>
         <view class="no-login">
@@ -20,27 +15,24 @@
         </view>
       </view>
     </view>
-
     <!-- 登录以后得面板 -->
-    <!-- <view class="user-container section">
+    <view wx:else class="user-container section">
       <view class="avatar-container">
-        <image src="/assets/images/avatar.png"></image>
+        <image src="{{userInfo.headimgurl}}"></image>
         <view class="no-login">
-          <text class="ellipsis">用户昵称</text>
+          <text class="ellipsis">{{userInfo.nickname}}</text>
         </view>
       </view>
       <view class="setting">
-        <navigator url="/pages/settings/settings"> 设置 </navigator>
+        <navigator url="/pages/settings/settings">设置</navigator>
       </view>
-    </view> -->
-
+    </view>
     <!-- 订单面板 -->
     <view class="order section">
       <view class="order-title-wrap">
         <text class="title">我的订单</text>
-        <text class="more">查看更多></text>
+        <navigator url="/pages/order/list" class="more">查看更多></navigator>
       </view>
-
       <view class="order-content-wrap">
         <view class="order-content-item" wx:for="{{ initpanel }}" wx:key="index">
           <navigator url="{{ item.url }}">
@@ -50,7 +42,6 @@
         </view>
       </view>
     </view>
-
     <!-- 关于售前售后服务面板 -->
     <view class="after-scale section">
       <view class="order-title-wrap">
@@ -73,8 +64,7 @@
         <text>鲜花可以提前7-15天预订重大节假日不支持定时配送</text>
       </view>
     </view>
-
     <!-- 底部面板 -->
-    <view class="info-footer"> 尚硅谷技术支持 </view>
+    <view class="info-footer">尚硅谷技术支持</view>
   </view>
 </view>
