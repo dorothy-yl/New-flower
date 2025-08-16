@@ -3,7 +3,7 @@
 import { toast } from '../../utils/extendApi'
 import { setStorage } from '../../utils/storage'
 import { reqLogin, reqUserInfo } from '../../api/user'
-import { userStore } from '../../stores/userstore'
+import { userStore } from '../../stores/userStore'
 
 // 导入ComponentWithStore方法
 import { ComponentWithStore } from 'mobx-miniprogram-bindings'
