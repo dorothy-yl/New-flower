@@ -13,3 +13,19 @@ export const reqUserInfo = () => {
     baseURL: 'http://localhost:3000'
   })
 }
+
+
+export const reqUploadFile = (filePath) => {
+  return http.upload('/weixin/uploadFile', {
+    filePath
+  }, {
+    baseURL: 'http://localhost:3000'
+  })
+}
+
+
+export const reqUpdateUserInfo = (userInfo) => {
+  return http.post('/api/upload/single', userInfo, {
+    baseURL: 'http://localhost:3000'
+  })
+}
