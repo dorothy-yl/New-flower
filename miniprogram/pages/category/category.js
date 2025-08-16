@@ -18,7 +18,7 @@ Page({
         imageUrl: this.formatImageUrl(item.imageUrl)
       }))
       console.log("subCategoryList", res.data[0].children, subCategoryList);
-      
+
       this.setData({
         categoryList: res.data,
         activeIndex: res.data[0].id,

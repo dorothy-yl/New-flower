@@ -38,12 +38,12 @@ Page({
         ...item,
         imageUrl: formatImageUrl(item.imageUrl, 'banner')
       })) || []
-      const categoryData = res[1]?.data.map(item=>({
+      const categoryData = res[1]?.data.map(item => ({
         ...item,
         imageUrl: formatImageUrl(item.imageUrl, 'cate')
       })) || []
       console.log("categoryData", categoryData);
-      
+
       const activeData = res[2]?.data || []
       const guessData = res[3]?.data || []
       const hotData = res[4]?.data || []

@@ -1,3 +1,4 @@
+// observable用于创建一个被监测的对象，对象的属性是应用对的状态，状态会被自动
 import { observable, action } from 'mobx-miniprogram'
 import { getStorage, setStorage } from '../utils/storage'
 

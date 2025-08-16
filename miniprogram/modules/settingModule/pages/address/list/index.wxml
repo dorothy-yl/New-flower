@@ -1,5 +1,4 @@
-<!--pages/address/list/index.wxml-->
-
+<!-- pages/address/list/index.wxml -->
 <view class="container address-list">
   <view class="list-warpper" wx:if="{{ addressList.length }}">
     <view wx:for="{{ addressList }}" wx:key="index" class="list-item">
@@ -12,12 +11,8 @@
                 <text>176****5678</text>
                 <text class="default-tag">默认</text>
               </view>
-
-              <view class="address-info">
-                甘肃省甘南藏族自治州碌曲县松日鼎盛大厦0层
-              </view>
+              <view class="address-info">甘肃省甘南藏族自治州碌曲县松日鼎盛大厦0层</view>
             </view>
-
             <view class="editBtn" bindtap="toEdit">
               <van-icon name="edit" size="22px" color="#999" />
             </view>
@@ -30,9 +25,7 @@
       </van-swipe-cell>
     </view>
   </view>
-
   <van-empty wx:else description="还没有收货地址，快去添加吧～" />
-
   <view class="footer">
     <view class="btn">
       <navigator url="/modules/settingModule/pages/address/add/index">

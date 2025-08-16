@@ -8,11 +8,8 @@
     "pages/goods/detail/detail",
     "pages/order/detail/detail",
     "pages/order/list/list",
-    "pages/address/add/index",
-    "pages/address/list/index",
     "pages/login/login",
     "pages/settings/settings",
-    "pages/profile/profile",
     "pages/test/test"
   ],
   "window": {
@@ -75,11 +72,21 @@
   "sitemapLocation": "sitemap.json",
   "subPackages": [
     {
-      "root": "subPackages/order",
+      "root": "modules/settingModule",
+      "name": "settingModule",
       "pages": [
-        "pages/list/list",
-        "pages/detail/detail"
+        "pages/address/add/index",
+        "pages/address/list/index",
+        "pages/profile/profile"
       ]
     }
-  ]
+  ],
+  "preloadRule": {
+    "pages/settings/settings": {
+      "network": "all",
+      "packages": [
+        "settingModule"
+      ]
+    }
+  }
 }
