@@ -11,11 +11,22 @@ Page({
     "districtCode": "440106", // 市编码
     "address": "", // 详细地址
     "fullAddress": "", // 完整地址
-    "isDefault": 0 // 是否默认 0 否 1 是
+    "isDefault": false // 是否默认 0 否 1 是
   },
 
   // 保存收货地址
-  saveAddrssForm(event) { },
+  saveAddrssForm(evet) {
+
+    const { provinceName, cityName, districtName, address, isDefault } = this.data
+
+
+    const params = {
+      ...this.data,
+      fullAddress: provinceName + cityName + districtName + address,
+      isDefault: isDefault ? 1 : 0
+    }
+    console.log(params)
+  },
 
   // 省市区选择
   onRegionChange(event) {
@@ -28,7 +39,7 @@ Page({
       districtName,
       provinceCode,
       cityCode,
-      districtCode  
+      districtCode
     })
   }
 })
