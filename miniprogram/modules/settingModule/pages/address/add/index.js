@@ -3,11 +3,11 @@ Page({
   data: {
     "name": "",   // 收货人 
     "phone": "",  // 手机号码
-    "provinceName": "广东省", // 省
+    "provinceName": "", // 省
     "provinceCode": "440000", // 省编码
-    "cityName": "广州市", // 市
-    "cityCode": "440100", // 市编码
-    "districtName": "天河区", // 区
+    "cityName": "", // 市
+    "cityCode": "", // 市编码
+    "districtName": "", // 区
     "districtCode": "440106", // 市编码
     "address": "", // 详细地址
     "fullAddress": "", // 完整地址
@@ -15,8 +15,20 @@ Page({
   },
 
   // 保存收货地址
-  saveAddrssForm(event) {},
+  saveAddrssForm(event) { },
 
   // 省市区选择
-  onAddressChange(event) {}
+  onRegionChange(event) {
+    // console.log(event)
+    const [provinceName, cityName, districtName] = event.detail.value
+    const [provinceCode, cityCode, districtCode] = event.detail.code
+    this.setData({
+      provinceName,
+      cityName,
+      districtName,
+      provinceCode,
+      cityCode,
+      districtCode  
+    })
+  }
 })
