@@ -24,7 +24,7 @@
       <view class="row">
         <text class="title">所在地区</text>
 
-        <picker mode="region">
+        <picker mode="region" value="{{ [provinceName, cityName, districtName] }}">
           <view class="placeholder"> 请选择收货人所在地区</view>
         </picker>
 

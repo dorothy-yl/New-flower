@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "新增收获地址",
+          "pathName": "modules/settingModule/pages/address/add/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "商品分类",
           "pathName": "pages/category/category",
           "query": "",
