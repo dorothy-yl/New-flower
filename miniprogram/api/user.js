@@ -34,3 +34,10 @@ export const reqUpdateUserInfo = (userInfo) => {
     baseURL: 'http://localhost:3000'
   })
 }
+
+// 更新用户基本信息（昵称、头像等）
+export const reqUpdateUserProfile = (profileData) => {
+  return http.post('/weixin/updateUserProfile', profileData, {
+    baseURL: 'http://localhost:3000'
+  })
+}

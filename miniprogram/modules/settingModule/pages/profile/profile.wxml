@@ -15,11 +15,11 @@
     <view class="btn">保存</view>
   </view>
   <van-dialog custom-style="position: relative" use-slot title="修改昵称" show="{{ isShowPopup }}" showConfirmButton="{{ false }}" showCancelButton="{{ false }}" transition="fade">
-    <form>
-      <input class="input-name" value="{{ userInfo.nickname }}" />
+    <form bindsubmit="getNickName">
+      <input type="nickname" name="nickname" class="input-name" value="{{ userInfo.nickname }}" placeholder="请输入昵称" bindinput="onNicknameInput" />
       <view class="dialog-content">
-        <button class="cancel" bindtap="cancelForm">取消</button>
-        <button class="confirm" type="primary">确定</button>
+        <button class="cancel" bindtap="cancelForm" form-type="reset">取消</button>
+        <button class="confirm" type="primary" form-type="submit">确定</button>
       </view>
     </form>
   </van-dialog>
