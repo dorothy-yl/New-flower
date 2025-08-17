@@ -98,6 +98,45 @@ class WXRequest {
     return this.request(Object.assign({ url, data, method: 'PUT' }, config))
   }
 
+  // 封装文件上传方法
+  upload(url, data = {}, config = {}) {
+    return new Promise((resolve, reject) => {
+      // 获取baseURL
+      const baseURL = config.baseURL || this.defaults.baseURL
+      const fullUrl = baseURL + url
+
+      // 合并配置
+      const uploadConfig = { ...this.defaults, ...config }
+
+      // 调用请求拦截器
+      const finalConfig = this.interceptors.request(uploadConfig)
+
+      wx.uploadFile({
+        url: fullUrl,
+        filePath: data.filePath,
+        name: data.name || 'file',
+        formData: data.formData || {},
+        header: finalConfig.header,
+        success: (res) => {
+          try {
+            // 尝试解析返回的数据
+            const result = typeof res.data === 'string' ? JSON.parse(res.data) : res.data
+            const mergeRes = Object.assign({}, result, { config: finalConfig, isSuccess: true })
+            resolve(this.interceptors.response(mergeRes))
+          } catch (error) {
+            // 如果解析失败，返回原始数据
+            const mergeRes = Object.assign({}, res, { config: finalConfig, isSuccess: true })
+            resolve(this.interceptors.response(mergeRes))
+          }
+        },
+        fail: (err) => {
+          const mergeErr = Object.assign({}, err, { config: finalConfig, isSuccess: false })
+          reject(this.interceptors.response(mergeErr))
+        }
+      })
+    })
+  }
+
   // 封装并发请求方法
   all(requests) {
     // 使用Promise.all进行并发请求

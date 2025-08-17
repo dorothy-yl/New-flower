@@ -1,4 +1,5 @@
 import instance from '../../utils/http'
+import { reqUploadFile } from '../../api/user'
 
 Page({
   async handler() {
@@ -41,7 +42,7 @@ Page({
       const res2 = await instance.get('/index/findCategory1')
       const res3 = await instance.get('/index/findBanner')
       const res4 = await instance.get('/index/findCategory1')
-      
+
       // console.log('并发请求结果:', { res1, res2, res3, res4 })
     } catch (error) {
       // console.error('并发请求失败:', error)
@@ -57,11 +58,46 @@ Page({
         instance.get('/index/findBanner'),
         instance.get('/index/findCategory1')
       ])
-      
+
       // console.log('真正的并发请求结果:', results)
       return results
     } catch (error) {
       // console.error('并发请求失败:', error)
+    }
+  },
+
+  // 测试头像上传功能
+  async testAvatarUpload() {
+    try {
+      console.log('开始测试头像上传...')
+
+      // 这里可以模拟一个文件路径进行测试
+      // 实际使用时需要通过wx.chooseImage或wx.chooseAvatar获取
+      const testFilePath = '/assets/images/avatar.png'
+
+      const result = await reqUploadFile(testFilePath, {
+        baseURL: 'http://localhost:3000'
+      })
+
+      console.log('头像上传测试结果:', result)
+
+      if (result.code === 200) {
+        wx.showToast({
+          title: '上传测试成功',
+          icon: 'success'
+        })
+      } else {
+        wx.showToast({
+          title: '上传测试失败',
+          icon: 'error'
+        })
+      }
+    } catch (error) {
+      console.error('头像上传测试失败:', error)
+      wx.showToast({
+        title: '上传测试失败',
+        icon: 'error'
+      })
     }
   }
 })

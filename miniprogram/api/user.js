@@ -15,11 +15,16 @@ export const reqUserInfo = () => {
 }
 
 
-export const reqUploadFile = (filePath) => {
+export const reqUploadFile = (filePath, config = {}) => {
   return http.upload('/weixin/uploadFile', {
-    filePath
+    filePath,
+    name: 'file',
+    formData: {
+      type: 'image'
+    }
   }, {
-    baseURL: 'http://localhost:3000'
+    baseURL: config.baseURL || 'http://localhost:3000',
+    ...config
   })
 }
 
