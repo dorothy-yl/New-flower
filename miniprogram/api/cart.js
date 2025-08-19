@@ -1,4 +1,4 @@
-import http from './http'
+import http from '../utils/http'
 
 
 
@@ -22,7 +22,7 @@ export const reqUpdateCheck = (goodsId, isChecked) => {
 
 
 //实现全选和全不选功能
-export const reqCheckAllStatus = (isChecked)=>{
+export const reqCheckAllStatus = (isChecked) => {
   return http.get(`/cart/checkAllCart/${isChecked}`)
 }
 

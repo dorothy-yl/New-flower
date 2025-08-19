@@ -10,8 +10,7 @@
     "pages/order/list/list",
     "pages/login/login",
     "pages/settings/settings",
-    "pages/test/test",
-    "api/cart.js"
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
